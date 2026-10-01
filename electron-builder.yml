@@ -1,0 +1,10 @@
+appId: ir.nobitex.aitrader
+productName: Nobitex AI Trader
+directories:
+  output: dist
+win:
+  target: nsis
+files:
+  - shared/**
+  - electron/**
+  - package.json

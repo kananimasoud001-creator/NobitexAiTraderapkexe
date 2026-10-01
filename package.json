@@ -1,0 +1,33 @@
+{
+  "name": "nobitex-ai-trader-standalone",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Standalone Android/Windows trading application. Paper mode by default.",
+  "scripts": {
+    "electron": "electron electron/main.js",
+    "build:electron": "electron-builder --win",
+    "android:add": "npx cap add android",
+    "android:sync": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "ir.nobitex.aitrader",
+    "productName": "Nobitex AI Trader",
+    "files": [
+      "shared/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
