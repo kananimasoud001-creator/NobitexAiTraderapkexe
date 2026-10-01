@@ -1,0 +1,4 @@
+const $=id=>document.getElementById(id);let stopped=false;
+async function market(){try{const r=await fetch("https://apiv2.nobitex.ir/v3/orderbook/BTCIRT");if(!r.ok)throw Error();const d=await r.json();const p=d.lastTradePrice||(d.bids&&d.bids[0]&&d.bids[0][0]);$("price").textContent=p?Number(p).toLocaleString("fa-IR")+" ریال":"—";$("status").textContent="داده بازار دریافت شد";$("check").children[0].textContent="داده بازار ✅"}catch(e){$("status").textContent="خطا در دریافت بازار";$("check").children[0].textContent="داده بازار ❌"}}
+function analyze(){if(stopped)return;$("decision").textContent="WAIT";$("reason").textContent="شرایط ورود کافی نیست؛ معامله‌ای انجام نمی‌شود."}
+$("refresh").onclick=market;$("analyze").onclick=analyze;$("paper").onclick=()=>{stopped=false;$("mode").textContent="PAPER"};$("stop").onclick=()=>{stopped=true;$("mode").textContent="STOPPED";$("decision").textContent="STOP"};market();analyze();
